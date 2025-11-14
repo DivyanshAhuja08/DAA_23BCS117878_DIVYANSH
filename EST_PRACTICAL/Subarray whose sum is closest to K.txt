@@ -1,0 +1,31 @@
+// Function to find the sum of subarray
+// whose sum is closest to K
+#include <bits/stdc++.h>
+using namespace std;
+
+int closestSubarraySumToK(vector<int>& arr, int k) {
+    
+      int diff = INT_MAX;
+
+    int ans = -1;
+
+       for (int i = 0; i < arr.size(); i++) {
+        int sum = 0;
+        for (int j = i; j < arr.size(); j++) {
+            sum += arr[j];
+
+            if (abs(k - sum) < diff) {
+                diff = abs(k - sum);
+                ans = sum;
+            }
+        }
+    }
+    return ans;
+}
+
+int main() {
+    vector<int> arr = {-5, 12, -3, 4, -15, 6, 1};
+    int k = 2;
+    cout << closestSubarraySumToK(arr, k) << endl;
+    return 0;
+}
